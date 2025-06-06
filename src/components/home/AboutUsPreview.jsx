@@ -7,7 +7,7 @@ import robotics from "../../assets/about-robotics.jpg";
 
 export default function AboutUsPreview() {
   return (
-    <section className="bg-[#f5faff] py-10 px-6 mb-10">
+    <section className="bg-[#f5faff] py-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Text part */}
         <motion.div

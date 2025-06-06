@@ -32,7 +32,7 @@ export default function Navbar() {
                             key={link.name}
                             onClick={() => setActive(link.href)}
                             className={`transition duration-300 hover:text-sky-700 ${active === link.href ? 'underline underline-offset-4' : ''
-                                }`}
+                                } hover:scale-120 transition-transform duration-300`}
                         >
                             {link.name}
                         </Link>

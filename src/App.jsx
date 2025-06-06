@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import './App.css'
 import NavBar from './components/NavBar.jsx'
 import { BrowserRouter, Route, Routes
 } from 'react-router-dom';
@@ -8,6 +6,7 @@ import AboutUs from './pages/AboutUs.jsx';
 import Services from './pages/Services.jsx';
 import Shop from './pages/Shop.jsx';
 import ContactUs from './pages/ContactUs.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   
@@ -22,6 +21,7 @@ function App() {
         <Route path="/shop" element={<Shop/>}></Route>
         <Route path="/contactUs" element={<ContactUs/>}></Route>
       </Routes>
+      <Footer/>
     </BrowserRouter> 
     </>
   )

@@ -1,7 +1,9 @@
-import React from 'react'
-import { motion, useAnimation } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { FaChalkboardTeacher, FaTools, FaRobot, FaCogs } from 'react-icons/fa'
+import React, { useEffect } from 'react';
+import {Link} from 'react-router-dom';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { FaChalkboardTeacher, FaTools, FaRobot, FaCogs, FaUsers, FaProjectDiagram, FaBuilding, FaGraduationCap, FaSmile } from 'react-icons/fa';
+import AnimatedContent from './AnimatedContent';
 
 const whyChoosePoints = [
   {
@@ -24,37 +26,162 @@ const whyChoosePoints = [
     title: 'End-to-End Solutions',
     text: 'From learning to product delivery, we provide complete technical support.',
   },
-]
+];
+
+const statsData = [
+  {
+    heading: 'Projects & Services',
+    stats: [
+      { 
+        icon: <FaProjectDiagram className="text-2xl text-green-600 mr-2" />, 
+        count: '300+ ',
+        text: 'Projects Delivered' 
+      },
+      { 
+        icon: <FaCogs className="text-2xl text-blue-600 mr-2" />, 
+        count: '40+ ', 
+        text: 'Product Solutions Built' 
+      },
+      { 
+        icon: <FaTools className="text-2xl text-orange-600 mr-2" />,
+        count: '25+ ', 
+        text: 'Research Projects Completed' 
+      }
+    ]
+  },
+  {
+    heading: 'Client & Industry Engagement',
+    stats: [
+      { 
+        icon: <FaBuilding className="text-2xl text-indigo-600 mr-2" />, 
+        count: '15+ ',
+        text: 'Industry Collaborations' 
+      },
+      { 
+        icon: <FaUsers className="text-2xl text-pink-600 mr-2" />, 
+        count: '10+ ',
+        text: 'Startup Partnerships' 
+      },
+      { 
+        icon: <FaSmile className="text-2xl text-yellow-600 mr-2" />,
+        count: '95% ', 
+        text: 'Client Satisfaction' 
+      }
+    ]
+  },
+  {
+    heading: 'Expertise & Training',
+    stats: [
+      { 
+        icon: <FaChalkboardTeacher className="text-2xl text-cyan-600 mr-2" />, 
+        count: '50+ ',
+        text: 'Industry Experts' 
+      },
+      { 
+        icon: <FaGraduationCap className="text-2xl text-purple-600 mr-2" />, 
+        count: '1300+ ',
+        text: 'Students Trained' 
+      },
+      { 
+        icon: <FaTools className="text-2xl text-teal-600 mr-2" />, 
+        count: '30+ ',
+        text: 'Real-World Workshops' 
+      }
+    ]
+  },
+  {
+    heading: 'Community Impact',
+    stats: [
+      { 
+        icon: <FaUsers className="text-2xl text-rose-600 mr-2" />, 
+        count: '5000+ ',
+        text: 'Tech Community Members' 
+      },
+      { 
+        icon: <FaProjectDiagram className="text-2xl text-lime-600 mr-2" />, 
+        count: '100+ ',
+        text: 'Career Transitions' 
+      },
+      { 
+        icon: <FaSmile className="text-2xl text-violet-600 mr-2" />,
+        count: '4.9/5 ', 
+        text: 'Average Rating' 
+      }
+    ]
+  },
+];
 
 export default function WhyChooseUs() {
   return (
     <section className="w-full py-10 bg-[#f5faff] overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#333] mb-10  text-center">Why Choose Us</h2>
+      <div className="max-w-5xl mx-auto px-4 mb-10">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#333] mb-10 text-center">Why Choose Us</h2>
         <div className="flex flex-col gap-8">
           {whyChoosePoints.map((point, index) => (
             <AnimatedCard key={index} point={point} index={index} />
           ))}
         </div>
       </div>
+
+      <div className='max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 px-4 py-4 overflow-hidden mb-5'>
+        {statsData.map((data, index) => (
+          <AnimatedContent
+            key={index}
+            distance={150}
+            direction="vertical"
+            reverse={true}
+            duration={1.2}
+            ease="bounce.out"
+            initialOpacity={0.2}
+            animateOpacity
+            scale={1.1}
+            threshold={0.5}
+            delay={0.3}
+          >
+            <div className='p-6 w-full bg-white shadow-lg rounded-xl lg:h-65'>
+              <h3 className='text-lg md:text-xl font-bold mb-4 text-gray-800 lg:h-[60px]'>
+                {data.heading}</h3>
+              <div className='flex flex-col gap-3'>
+                {data.stats.map((stat, idx) => (
+                  <div key={idx} className='flex items-start text-gray-700'>
+                    {stat.icon}
+                    <div>
+                      <span className='text-lg text-[#69c] font-bold'>{stat.count}</span>
+                      <span className='text-base'>{stat.text}</span></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </AnimatedContent>
+        ))}
+      </div>
+
+      <div className='text-center'>
+        <Link
+            to="/contactUs"
+            className="inline-block bg-[#69c] text-white text-lg font-bold px-2 sm:px-2 md:px-3 py-1 sm:py-2 md:py-2 rounded-lg shadow transition duration-300 hover:underline hover:underline-offset-4 transition text-center"
+          >
+            Contact Us
+          </Link>
+      </div>
     </section>
-  )
+  );
 }
 
 function AnimatedCard({ point, index }) {
-  const controls = useAnimation()
+  const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.3,
-  })
+  });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
-      controls.start({ opacity: 1, x: 0 })
+      controls.start({ opacity: 1, x: 0 });
     }
-  }, [controls, inView])
+  }, [controls, inView]);
 
-  const fromDirection = index % 2 === 0 ? 100 : -100
+  const fromDirection = index % 2 === 0 ? 100 : -100;
 
   return (
     <motion.div
@@ -62,7 +189,7 @@ function AnimatedCard({ point, index }) {
       initial={{ opacity: 0, x: fromDirection }}
       animate={controls}
       transition={{ duration: 0.7, ease: 'easeOut' }}
-      className="bg-white shadow-lg rounded-xl p-6 flex items-start"
+      className="p-6 flex items-start lg:bg-white lg:shadow-lg lg:rounded-xl"
     >
       {point.icon}
       <div>
@@ -70,5 +197,5 @@ function AnimatedCard({ point, index }) {
         <p className="text-gray-600">{point.text}</p>
       </div>
     </motion.div>
-  )
+  );
 }

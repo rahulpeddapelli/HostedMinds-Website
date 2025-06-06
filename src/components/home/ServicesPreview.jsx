@@ -66,7 +66,7 @@ const ServicesPreview = () => {
   };
 
   return (
-    <section className="px-4 py-10 bg-gray-100 mb-10">
+    <section className="px-4 py-10 bg-gray-100">
       <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-[#333] mb-8">
         Our Services
       </h2>
@@ -76,8 +76,8 @@ const ServicesPreview = () => {
             key={index}
             className="w-full bg-white shadow-lg rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer"
             onClick={() => handleToggle(index)}
-            // onMouseEnter={() => window.innerWidth >= 768 && setActiveCard(index)}
-            // onMouseLeave={() => window.innerWidth >= 768 && setActiveCard(null)}
+            onMouseEnter={() => window.innerWidth >= 768 && setActiveCard(index)}
+            onMouseLeave={() => window.innerWidth >= 768 && setActiveCard(null)}
           >
             {/* Always-visible card summary */}
             <div className="p-4 md:p-6">
