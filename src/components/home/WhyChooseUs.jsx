@@ -113,9 +113,9 @@ const statsData = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="w-full py-10 bg-[#f5faff] overflow-hidden">
+    <section className="w-full py-10 bg-[#fafcff] overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 mb-10">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#333] mb-10 text-center">Why Choose Us</h2>
+        <h2 className="text-3xl font-bold text-[#333] mb-10 text-center">Why Choose Us</h2>
         <div className="flex flex-col gap-8">
           {whyChoosePoints.map((point, index) => (
             <AnimatedCard key={index} point={point} index={index} />
@@ -138,7 +138,7 @@ export default function WhyChooseUs() {
             threshold={0.5}
             delay={0.3}
           >
-            <div className='p-6 w-full bg-white shadow-lg rounded-xl lg:h-65'>
+            <div className='p-6 w-full bg-white shadow-lg rounded-xl lg:h-75 xl:h-65'>
               <h3 className='text-lg md:text-xl font-bold mb-4 text-gray-800 lg:h-[60px]'>
                 {data.heading}</h3>
               <div className='flex flex-col gap-3'>

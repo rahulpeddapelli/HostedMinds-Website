@@ -7,21 +7,26 @@ import Services from './pages/Services.jsx';
 import Shop from './pages/Shop.jsx';
 import ContactUs from './pages/ContactUs.jsx';
 import Footer from './components/Footer.jsx';
+import ScrollToTop from './customHooks/ScrollToTop.jsx';
+import ScrollToFaq from './customHooks/ScrollToFaq.jsx';
+
 
 function App() {
-  
+ 
   return (
     <>
     <BrowserRouter>
-      <NavBar/> 
+      <ScrollToTop />
+      <ScrollToFaq/>
+      <NavBar />
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/aboutUs" element={<AboutUs/>}></Route>
-        <Route path="/services" element={<Services/>}></Route>
-        <Route path="/shop" element={<Shop/>}></Route>
-        <Route path="/contactUs" element={<ContactUs/>}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/contactUs" element={<ContactUs />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter> 
     </>
   )

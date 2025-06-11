@@ -36,9 +36,9 @@ export default function ClientInfoSection() {
   }, []);
 
   return (
-    <section className="bg-gray-100 py-12">
+    <section className="bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 mb-16">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#333] mb-10 text-center">Our Clients</h2>
+        <h2 className="text-3xl font-bold text-[#6699cc] mb-10 text-center">Our Clients</h2>
         <div className="flex flex-wrap justify-center gap-8 items-center mb-6">
           {clientLogos.map((src, index) => (
             <img key={index} src={src} alt={`client-${index}`} className="h-34 w-auto object-contain"/>
@@ -56,7 +56,7 @@ export default function ClientInfoSection() {
 
       {/* Client Feedback */}
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#333] mb-10 text-center">What Our Clients Say</h2>
+        <h2 className="text-3xl font-bold text-[#6699cc] mb-10 text-center">What Our Clients Say</h2>
         <div className="relative">
           {/* Feedback Cards */}
           <div className="flex flex-col sm:flex-row sm:justify-between gap-6 transition-all duration-500">
@@ -85,6 +85,15 @@ export default function ClientInfoSection() {
               />
             ))}
           </div>
+        </div>
+
+        <div className="text-center mt-6">
+          <Link
+            to="/" 
+            className="text-blue-600 hover:text-blue-800 font-semibold transition"
+          >
+            View More Testimonials &rarr;
+          </Link>
         </div>
       </div>
 

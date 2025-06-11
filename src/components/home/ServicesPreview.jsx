@@ -1,126 +1,81 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FaTools, FaRobot, FaFlask, FaCode, FaMicrochip } from "react-icons/fa";
-import serviceIt from "../../assets/service-it.jpg";
-import serviceIot from "../../assets/service-iot.jpeg";
-import serviceRobo from "../../assets/service-robotics.jpg";
+import React, { useState } from 'react';
+import image1 from '../../assets/servicesPreview/service-robotics.jpg';
+import image2 from '../../assets/servicesPreview/service-iot.jpeg';
+import image3 from '../../assets/servicesPreview/service-it.jpg';
 
-
-const servicesData = [
-  {
-    domain: "STEM & Robotics",
-    description:
-      "Empowering students through hands-on STEM labs and robotics education.",
-    subServices: [
-      { name: "STEM Lab Setup", icon: <FaFlask /> },
-      { name: "Robotics Courses", icon: <FaRobot /> },
-      { name: "Educational Projects", icon: <FaTools /> },
-    ],
-    image: serviceRobo,
-    link: "/services/stem",
-  },
-  {
-    domain: "Software & App Development",
-    description:
-      "Custom software, mobile apps, and e-learning platforms built for the modern world.",
-    subServices: [
-      { name: "Website Development", icon: <FaCode /> },
-      { name: "Mobile App Development", icon: <FaCode /> },
-      { name: "HostedMinds E-Learning", icon: <FaCode /> },
-    ],
-    image: serviceIt,
-    link: "/services/it",
-  },
-  {
-    domain: "Electronics & IoT",
-    description:
-      "Complete solutions from circuit design to smart IoT systems and manufacturing.",
-    subServices: [
-      { name: "PCB Designing", icon: <FaMicrochip /> },
-      { name: "IoT/IIoT Services", icon: <FaMicrochip /> },
-      { name: "Electronics Manufacturing", icon: <FaMicrochip /> },
-      { name: "Reverse Engineering", icon: <FaMicrochip /> },
-      { name: "Product Unit Testing", icon: <FaMicrochip /> },
-    ],
-    image: serviceIot,
-    link: "/services/iot",
-  },
+const services = [
+  'STEM', 'STEM LAB Setup', 'E-Learning', 'Learn to Code', 'Experiential Learning',
+  'Robotics', 'Educational Projects', 'Circuit & PCB Designing', 'Electronics Manufacturing Services',
+  'Component Procurement', 'Reverse Engineering', 'Product Unit Testing', 'IoT & IIoT Services',
+  'Software & Website Development', 'Mobile App Development', 'Research & Development',
+  'POC & Prototypes', 'Product Development/Pilot'
 ];
 
-const ServicesPreview = () => {
-  const [activeCard, setActiveCard] = useState(null);
+const imageUrls = [
+  image1,
+  image2,
+  image3,
+  image1,
+  image2,
+  image3,
+  image1,
+  image2,
+  image3,
+  image1,
+  image2,
+  image3,
+  image1,
+  image2,
+  image3,
+  image1,
+  image2,
+  image3,
+];
 
-
-  const [textContent, setTextContent] = useState("View");
-  useEffect(()=>{
-    if (window.innerWidth < 480) {
-        setTextContent("View");
-    }else {
-        setTextContent("View Service");
-    }
-  },[])
-
-
-  const handleToggle = (index) => {
-    setActiveCard((prev) => (prev === index ? null : index));
-  };
+const OurServicesPreview = () => {
+  const [showAll, setShowAll] = useState(false);
+  const visibleServices = showAll ? services : services.slice(0, 8);
 
   return (
-    <section className="px-4 py-10 bg-gray-100">
-      <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-[#333] mb-8">
-        Our Services
-      </h2>
-      <div className="space-y-6 max-w-7xl mx-auto">
-        {servicesData.map((service, index) => (
-          <div
-            key={index}
-            className="w-full bg-white shadow-lg rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer"
-            onClick={() => handleToggle(index)}
-            onMouseEnter={() => window.innerWidth >= 768 && setActiveCard(index)}
-            onMouseLeave={() => window.innerWidth >= 768 && setActiveCard(null)}
-          >
-            {/* Always-visible card summary */}
-            <div className="p-4 md:p-6">
-              <div className="flex justify-between items-center">
-                <h3 className="text-xl font-semibold text-gray-700">
-                  {service.domain}
-                </h3>
-                <Link
-                  to={service.link}
-                  className="bg-[#69c] text-white text-sm font-semibold px-2 sm:px-2 md:px-3 py-1 sm:py-2 md:py-2 rounded-lg shadow transition duration-300 hover:underline hover:underline-offset-4 transition text-center"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {textContent}
-                </Link>
+    <section className="bg-gray-50 py-12">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-lg font-semibold text-[#69c] tracking-wide uppercase mb-2">SERVICES</h2>
+        <h3 className="text-3xl font-bold text-[#333] mb-8">Transform your business with advanced technologies</h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {visibleServices.map((title, index) => (
+            <div key={index} className="relative group overflow-hidden rounded-lg shadow-md transform transition duration-300 hover:-translate-y-2 cursor-pointer">
+              <img
+                src={imageUrls[index]}
+                alt="Service"
+                className="w-full h-64 object-cover"
+              />
+
+              
+              <div className="absolute inset-0 bg-black/25 transition-opacity duration-300 group-hover:bg-black/60"></div>
+
+              <div className="absolute inset-0 flex items-center justify-center ">
+                <h3 className="text-white text-xl font-bold text-center px-2">{title}</h3>
               </div>
-              <p className="text-gray-600 mt-2 text-lg">{service.description}</p>
             </div>
 
-            {/* Expanded sub-services & image */}
-            {activeCard === index && (
-              <div className="flex flex-col md:flex-row items-start gap-4 p-4 border-t border-gray-200">
-                <div className="w-full md:w-2/3 space-y-2">
-                  {service.subServices.map((sub, i) => (
-                    <div key={i} className="flex items-center gap-2 text-gray-700">
-                      <span className="text-[#69c]">{sub.icon}</span>
-                      <span className="md:text-md">{sub.name}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="w-full md:w-1/3">
-                  <img
-                    src={service.image}
-                    alt={`${service.domain} preview`}
-                    className="w-full h-48 object-cover rounded-lg shadow"
-                  />
-                </div>
-              </div>
-            )}
+          ))}
+        </div>
+
+        {/* View More Button */}
+        {!showAll && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="bg-[#6699cc] text-white font-semibold px-6 py-2 rounded hover:bg-[#3388cc] transition duration-300 text-md"
+            >
+              View More
+            </button>
           </div>
-        ))}
+        )}
       </div>
     </section>
   );
 };
 
-export default ServicesPreview;
+export default OurServicesPreview;

@@ -1,53 +1,49 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import iot from "../../assets/about-iot.png";
-import coding from "../../assets/about-coding.jpeg";
-import robotics from "../../assets/about-robotics.jpg";
 
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import iot from "../../assets/aboutPreview/about-iot.png";
+import coding from "../../assets/aboutPreview/about-coding.jpeg";
+import robotics from "../../assets/aboutPreview/sample.jpg";
 
 export default function AboutUsPreview() {
+  const images = [robotics, iot, coding,];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000); // 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="bg-[#f5faff] py-10 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        {/* Text part */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false, amount: 0.3 }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#333] mb-4">
-            Who are we ?
-            {/* <span className="text-[#69c]">HostedMinds</span> */}
-          </h2>
-          <p className="text-gray-700 text-lg mb-6">
-           At Hostedminds, we ignite curiosity, foster innovation, and empower tomorrow’s tech leaders. With strong roots in robotics, STEM education, software development, IoT, and more, we’re leading the way in educational and technological innovation.
+    <div className="w-full bg-[#fafcff]">
+      <section className="relative max-w-7xl mx-auto h-[600px] overflow-hidden bg-black text-white">
+        {/* Background Image */}
+        <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+          <img
+            src={images[currentIndex]}
+            alt={`slide-${currentIndex}`}
+            className="w-full h-full object-cover transition-opacity duration-1000"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        {/* Text Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">Who We Are</h2>
+          <p className="text-lg md:text-xl max-w-3xl">
+            HostedMinds is a creative powerhouse blending education and innovation to shape future-ready thinkers.
           </p>
           <Link
             to="/aboutUs"
-            className="inline-block bg-[#69c] text-white text-lg font-bold px-2 sm:px-2 md:px-3 py-1 sm:py-2 md:py-2 rounded-lg shadow transition duration-300 hover:underline hover:underline-offset-4 transition text-center"
+            className="mt-6 inline-block bg-[#6699cc] px-6 py-3 rounded-full transition duration-300 hover:underline hover:underline-offset-4 font-bold"
           >
             Learn More
           </Link>
-        </motion.div>
-
-        {/* Images collection part */}
-        <motion.div
-          className="grid grid-cols-2 gap-4"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: false, amount: 0.3 }}
-        >
-          <img src={iot} alt="iot image" className="rounded-lg shadow-md object-cover h-48 w-full" />
-          <img src={coding} alt="Code image" className="rounded-lg shadow-md object-cover h-48 w-full" />
-          <img
-            src={robotics}
-            alt="robotics image"
-            className="rounded-lg shadow-md object-cover h-48 w-full col-span-2"
-          />
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }
