@@ -107,7 +107,7 @@ const AboutUs = () => {
           <p className="text-lg text-gray-300">Join hands with HostedMinds to shape tomorrow’s innovations, today.</p>
           <Link
             to="/contactUs"
-            className="inline-block bg-white text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-gray-300 transition duration-300 mt-5"
+            className="inline-block text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-full text-lg px-5 py-3 text-center mt-4 mb-2"
           >
             Contact Us
           </Link>

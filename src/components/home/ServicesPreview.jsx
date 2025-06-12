@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import image1 from '../../assets/servicesPreview/service-robotics.jpg';
 import image2 from '../../assets/servicesPreview/service-iot.jpeg';
 import image3 from '../../assets/servicesPreview/service-it.jpg';
@@ -32,9 +33,16 @@ const imageUrls = [
   image3,
 ];
 
-const OurServicesPreview = () => {
+const OurServicesPreview = ({setOpenService}) => {
+  const navigate = useNavigate();
   const [showAll, setShowAll] = useState(false);
   const visibleServices = showAll ? services : services.slice(0, 8);
+
+
+  const handleSerivceOpen = (title)=>{
+    setOpenService(title);
+    navigate("/services");
+  }
 
   return (
     <section className="bg-gray-50 py-12">
@@ -44,7 +52,7 @@ const OurServicesPreview = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {visibleServices.map((title, index) => (
-            <div key={index} className="relative group overflow-hidden rounded-lg shadow-md transform transition duration-300 hover:-translate-y-2 cursor-pointer">
+            <div onClick={()=>handleSerivceOpen(title)} key={index} className="relative group overflow-hidden rounded-lg shadow-md transform transition duration-300 hover:-translate-y-2 cursor-pointer">
               <img
                 src={imageUrls[index]}
                 alt="Service"
@@ -67,7 +75,7 @@ const OurServicesPreview = () => {
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowAll(true)}
-              className="bg-[#6699cc] text-white font-semibold px-6 py-2 rounded hover:bg-[#3388cc] transition duration-300 text-md"
+              className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
             >
               View More
             </button>

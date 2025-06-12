@@ -6,12 +6,12 @@ import ClientInfoSection from '../components/home/ClientInfoSection';
 import FAQSection from '../components/home/FAQ';
 
 
-export default function Home() {
+export default function Home({setOpenService}) {
   return (
     <>
       <LandingComponent/>
       <AboutUsPreview/>
-      <ServicesPreview/>
+      <ServicesPreview setOpenService={setOpenService}/>
       <WhyChooseUs/>
       <ClientInfoSection/>
       <FAQSection/>

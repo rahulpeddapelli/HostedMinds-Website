@@ -21,7 +21,7 @@ const domainSuggestions = [
   'POC & Prototypes', 'Product Development/Pilot'
 ];
 
-export default function Navbar() {
+export default function Navbar({setOpenService}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -45,6 +45,7 @@ export default function Navbar() {
     setSearchInput(suggestion);
     setShowSuggestions(false);
     navigate('/services');
+    setOpenService(suggestion)
     setMenuOpen(false);
   };
 

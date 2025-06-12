@@ -6,3 +6,46 @@ html {
 }
 
 
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10%, 40% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInRight {
+  0%, 50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  60%, 90% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.animate-slide-left {
+  animation: slideInLeft 8s ease-in-out infinite;
+}
+
+.animate-slide-right {
+  animation: slideInRight 8s ease-in-out infinite;
+}
+
+

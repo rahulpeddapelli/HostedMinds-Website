@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <img src={hostedLogo} alt="HostedMinds Logo" className="w-12 h-12 object-contain" />
-            <span className="text-2xl font-extrabold">HOSTEDMINDS™</span>
+            <span className="text-2xl font-extrabold">HOSTEDMINDS<span className="text-md ml-1 relative -top-0.5">™</span></span>
           </div>
           <p className="text-sm">
             Web | Mobile | IOT | Robotics | Software Devlopement
@@ -31,7 +31,7 @@ export default function Footer() {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700"><FaLinkedin /></a>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700"><FaFacebookF /></a>
           </div>
-          <p className="text-xs mt-4 text-white">© {new Date().getFullYear()} HOSTEDMINDS™. All rights reserved.</p>
+          <p className="text-xs mt-4 text-white">© {new Date().getFullYear()} HOSTEDMINDS<span className="text-md ml-0.5 relative -top-0.5">™</span>. All rights reserved.</p>
         </div>
 
         {/* Column 2: Useful Links */}

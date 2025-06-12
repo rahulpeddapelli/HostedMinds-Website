@@ -47,7 +47,7 @@ export default function ClientInfoSection() {
         <div className="text-center">
           <Link
             to="/" 
-            className="text-blue-600 hover:text-blue-800 font-semibold transition"
+            className=" text-lg text-blue-600 hover:text-blue-800 font-semibold transition"
           >
             View More Clients &rarr;
           </Link>
@@ -90,7 +90,7 @@ export default function ClientInfoSection() {
         <div className="text-center mt-6">
           <Link
             to="/" 
-            className="text-blue-600 hover:text-blue-800 font-semibold transition"
+            className="text-lg text-blue-600 hover:text-blue-800 font-semibold transition"
           >
             View More Testimonials &rarr;
           </Link>

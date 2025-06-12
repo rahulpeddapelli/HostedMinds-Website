@@ -37,10 +37,9 @@ export default function LandingComponent() {
 
 
                     <div className="mt-6 flex gap-6 justify-center lg:justify-start">
-                        <Link to="/services" className="inline-block w-1/2 sm:w-1/3 bg-[#69c] text-white text-lg font-bold px-2 sm:px-2 md:px-3 py-1 sm:py-2 md:py-2 rounded-lg shadow transition duration-300 hover:underline hover:underline-offset-4 transition text-center">
-                            Get Started
+                        <Link to="/services" className="inline-block w-2/3 sm:w-1/3 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:outline-none  font-medium rounded-lg text-lg px-5 py-3 text-center me-2 mb-2">
+                           Explore our services
                         </Link>
-
                     </div>
                 </div>
 

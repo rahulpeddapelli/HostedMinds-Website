@@ -84,7 +84,7 @@ const FAQSection = () => {
           </div>
           <Link
             to="/contactUs"
-            className="inline-block bg-[#69c] text-white text-lg font-bold px-2 sm:px-2 md:px-3 py-1 sm:py-2 md:py-2 rounded-lg shadow transition duration-300 hover:underline hover:underline-offset-4 transition text-center w-full"
+            className="inline-block text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:outline-none  font-medium rounded-lg text-lg px-5 py-3 text-center me-2 mb-2 w-full"
           >
             Contact Us
           </Link>
