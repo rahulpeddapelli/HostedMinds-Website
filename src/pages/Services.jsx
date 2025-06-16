@@ -33,7 +33,8 @@ export default function ServicesPage({ currentOpenService, setOpenService }) {
   }, [isSidebarOpen]);
 
   return (
-    <div className="flex flex-col md:flex-row max-w-7xl mx-auto min-h-[calc(100vh-4rem)]">
+    <section className='bg-gray-50'>
+    <div className="flex flex-col md:flex-row max-w-7xl mx-auto min-h-[calc(100vh-4rem)] ">
 
       {/* Sidebar for md and up */}
       <div className="hidden md:flex flex-col w-full md:w-1/3 border-r border-gray-200 h-full" style={{ maxHeight: rightHeight }}>
@@ -57,32 +58,41 @@ export default function ServicesPage({ currentOpenService, setOpenService }) {
       {/* Mobile Sidebar Overlay */}
       {isSidebarOpen && (
         <div className="fixed inset-0 bg-black/70 z-50 flex">
-          <div className="bg-white w-3/4 h-full p-4 overflow-y-auto space-y-3">
-            <div className='flex items-center justify-between'>
+          <div className="bg-white w-3/4 h-full flex flex-col max-h-screen">
+
+            {/* Header (static) */}
+            <div className="p-4 border-b border-gray-300 flex items-center justify-between bg-white shrink-0">
               <h2 className="text-2xl font-bold text-[#333]">Our Services</h2>
               <button
                 onClick={() => setSidebarOpen(false)}
-                className="text-gray-600 hover:text-black"
+                className="text-[#333] hover:text-black"
               >
                 <X size={24} />
               </button>
             </div>
-            {serviceData.map(service => (
-              <div
-                key={service.id}
-                onClick={() => {
-                  setOpenService(service.title);
-                  setSidebarOpen(false);
-                }}
-                className={`cursor-pointer p-3 rounded-md hover:bg-blue-100 ${currentOpenService === service.title ? 'bg-blue-200 font-semibold' : ''
-                  }`}
-              >
-                {service.title}
-              </div>
-            ))}
+
+            {/* Scrollable Services */}
+            <div className="flex-1 min-h-0 overflow-y-auto px-4 py-2 space-y-3">
+              {serviceData.map(service => (
+                <div
+                  key={service.id}
+                  onClick={() => {
+                    setOpenService(service.title);
+                    setSidebarOpen(false);
+                  }}
+                  className={`cursor-pointer p-3 rounded-md hover:bg-blue-100 transition ${currentOpenService === service.title ? 'bg-blue-200 font-semibold' : ''}`}
+                >
+                  {service.title}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
+
+
+
+
 
       {/* Service Content */}
       <div ref={rightRef} className="w-full md:w-2/3 p-4 flex flex-col space-y-6 h-full">
@@ -115,7 +125,9 @@ export default function ServicesPage({ currentOpenService, setOpenService }) {
         </div>
 
         {/* Features Section */}
-        <div className='bg-white rounded-md shadow-md p-4'>
+        <div className='bg-white rounded-md p-4' style={{
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+        }}>
           <h2 className="text-lg font-semibold text-[#69c] mb-2">Features</h2>
           <div className='flex flex-wrap gap-4 md:gap-8'>
             {openedService.features.map((feat, idx) => (
@@ -127,7 +139,9 @@ export default function ServicesPage({ currentOpenService, setOpenService }) {
         </div>
 
         {/* Audience Section */}
-        <div className='bg-white rounded-md shadow-md p-4'>
+        <div className='bg-white rounded-md p-4' style={{
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+        }}>
           <h2 className="text-lg font-semibold text-[#69c] mb-2">Target Audience</h2>
           <div className='flex flex-wrap gap-4 md:gap-8'>
             {openedService.features.map((a, idx) => (
@@ -139,7 +153,9 @@ export default function ServicesPage({ currentOpenService, setOpenService }) {
         </div>
 
         {/* Benefits Section */}
-        <div className='bg-white rounded-md shadow-md p-4'>
+        <div className='bg-white rounded-md p-4' style={{
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+        }}>
           <h2 className="text-lg font-semibold text-[#69c] mb-2">Benefits</h2>
           <div className="flex flex-wrap gap-4 md:gap-8">
             {openedService.benefits.map((b, idx) => (
@@ -158,6 +174,7 @@ export default function ServicesPage({ currentOpenService, setOpenService }) {
         </div>
       </div>
     </div>
+    </section>
   );
 }
 

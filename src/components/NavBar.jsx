@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { FaSearch, FaExclamationCircle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ const domainSuggestions = [
   'POC & Prototypes', 'Product Development/Pilot'
 ];
 
-export default function Navbar({setOpenService}) {
+export default function Navbar({ setOpenService, setNavbarHeight}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -37,6 +37,14 @@ export default function Navbar({setOpenService}) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    if (navRef.current && setNavbarHeight) {
+      setNavbarHeight(navRef.current.offsetHeight);
+    }
+  }, [setNavbarHeight]);
+
   const filteredSuggestions = domainSuggestions.filter((item) =>
     item.toLowerCase().includes(searchInput.toLowerCase())
   );
@@ -50,7 +58,7 @@ export default function Navbar({setOpenService}) {
   };
 
   return (
-    <nav className="bg-[#69c] sticky top-0 z-50 shadow-md">
+    <nav ref = {navRef} className="bg-[#69c] sticky top-0 z-50 shadow-md lg:h-16">
       {/* Top Row: Logo + Nav + Search OR Menu */}
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo + Name */}
@@ -65,8 +73,8 @@ export default function Navbar({setOpenService}) {
         {windowWidth >= 768 && (
           <div
             className={`font-bold ${windowWidth > 950
-                ? 'flex-1 flex justify-center gap-6'
-                : 'flex gap-4 justify-end ml-auto'
+              ? 'flex-1 flex justify-center gap-6'
+              : 'flex gap-4 justify-end ml-auto'
               }`}
           >
             {navLinks.map((link) => (

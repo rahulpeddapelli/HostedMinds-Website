@@ -47,8 +47,8 @@ const OurServicesPreview = ({setOpenService}) => {
   return (
     <section className="bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-lg font-semibold text-[#69c] tracking-wide uppercase mb-2">SERVICES</h2>
-        <h3 className="text-3xl font-bold text-[#333] mb-8">Transform your business with advanced technologies</h3>
+        {/* <h2 className="text-lg font-semibold text-[#69c] tracking-wide uppercase mb-2">SERVICES</h2> */}
+        <h3 className="text-3xl md:text-4xl font-bold text-[#69c] mb-8">Transform your business with advanced technologies</h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {visibleServices.map((title, index) => (
@@ -75,7 +75,7 @@ const OurServicesPreview = ({setOpenService}) => {
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowAll(true)}
-              className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
             >
               View More
             </button>

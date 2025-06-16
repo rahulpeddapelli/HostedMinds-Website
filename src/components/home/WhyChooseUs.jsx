@@ -115,7 +115,7 @@ export default function WhyChooseUs() {
   return (
     <section className="w-full py-16 bg-[#fafcff] overflow-hidden">
       <div className="text-center max-w-2xl mx-auto mb-10 px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#333] mb-3">Why Choose Us</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#69c] mb-3">Why Choose Us</h2>
         <p className="text-gray-600 text-base sm:text-xl">
           Discover what makes us stand out as your trusted innovation and education partner.
         </p>
@@ -129,7 +129,7 @@ export default function WhyChooseUs() {
 
 
       <div className="text-center max-w-2xl mx-auto mb-10 px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#333] mb-3">Our Achievements</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#69c] mb-3">Our Achievements</h2>
         <p className="text-gray-600 text-base sm:text-xl">
           A glimpse at the impact we've made through education, innovation, and industry collaboration.
         </p>
@@ -144,11 +144,10 @@ export default function WhyChooseUs() {
             direction="horizontal"
             reverse={true}
             duration={1.2}
-            ease="bounce.out"
-            initialOpacity={0.2}
+            initialOpacity={0}
             animateOpacity
             scale={1.1}
-            threshold={0.3}
+            threshold={0.1}
             delay={0.3}
           >
             <div className='p-6 w-full bg-white shadow-lg rounded-xl lg:h-75 xl:h-65'>

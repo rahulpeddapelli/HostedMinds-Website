@@ -32,7 +32,7 @@ const FAQSection = () => {
 
   return (
     <section id="faq" className="bg-[#fafcff] py-10 px-4">
-      <h2 className="max-w-7xl mx-auto text-3xl font-bold text-[#6699cc] mb-10">Frequently Asked Questions</h2>
+      <h2 className="max-w-7xl mx-auto text-3xl font-bold text-[#69c] mb-10">Frequently Asked Questions</h2>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 items-start lg:h-110">
         {/* Right Side FAQ Content */}

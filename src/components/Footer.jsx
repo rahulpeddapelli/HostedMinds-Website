@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
         {/* Column 1: Logo and Info */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 -mt-3">
           <div className="flex items-center gap-3">
             <img src={hostedLogo} alt="HostedMinds Logo" className="w-12 h-12 object-contain" />
             <span className="text-2xl font-extrabold">HOSTEDMINDS<span className="text-md ml-1 relative -top-0.5">™</span></span>
@@ -31,37 +31,51 @@ export default function Footer() {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700"><FaLinkedin /></a>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700"><FaFacebookF /></a>
           </div>
-          <p className="text-xs mt-4 text-white">© {new Date().getFullYear()} HOSTEDMINDS<span className="text-md ml-0.5 relative -top-0.5">™</span>. All rights reserved.</p>
         </div>
+
 
         {/* Column 2: Useful Links */}
         <div>
-          <h4 className="text-lg font-semibold mb-4">Useful Links</h4>
-          <ul className="space-y-3">
-            {navLinks.map((link, idx) => (
-              <li key={idx}>
+          <h4 className="text-lg font-semibold mb-4 text-left">Useful Links</h4>
+          <div className="grid grid-cols-2 gap-2 justify-items-start max-w-xs">
+            <ul className="space-y-3">
+              {navLinks.slice(0, 3).map((link, idx) => (
+                <li key={idx}>
+                  <Link
+                    to={link.href}
+                    className="hover:text-sky-700 transition-colors duration-300"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ul className="space-y-3">
+              {navLinks.slice(3).map((link, idx) => (
+                <li key={idx}>
+                  <Link
+                    to={link.href}
+                    className="hover:text-sky-700 transition-colors duration-300"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
                 <Link
-                  to={link.href}
+                  to="/#faq"
                   className="hover:text-sky-700 transition-colors duration-300"
                 >
-                  {link.name}
+                  FAQ
                 </Link>
               </li>
-            ))}
-
-            {/* Add FAQ separately to scroll to section ID */}
-            <li>
-              <Link to="/#faq"
-                className="hover:text-sky-700 transition-colors duration-300"
-              >
-                FAQ
-              </Link>
-            </li>
-          </ul>
+            </ul>
+          </div>
         </div>
 
+
         {/* Column 3: Subscribe */}
-        <div>
+        <div >
           <h4 className="text-lg font-semibold mb-4">Subscribe to Our Newsletter</h4>
           <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-4">
             <input
@@ -72,7 +86,7 @@ export default function Footer() {
             />
             <button
               type="submit"
-              className="text-white bg-sky-700 font-semibold px-6 py-2 rounded hover:bg-sky-800 transition"
+              className="text-white bg-sky-700 font-semibold px-6 py-2 rounded hover:bg-sky-800 transition duration-300 cursor-pointer"
             >
               Subscribe
             </button>
@@ -80,6 +94,7 @@ export default function Footer() {
         </div>
 
       </div>
+      <p className="text-sm mt-10 text-white max-w-7xl mx-auto text-center">© {new Date().getFullYear()} HOSTEDMINDS<span className="text-md ml-0.5 relative -top-0.5">™</span>. All rights reserved.</p>
     </footer>
   );
 }
