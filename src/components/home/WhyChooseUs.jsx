@@ -150,16 +150,17 @@ export default function WhyChooseUs() {
             threshold={0.1}
             delay={0.3}
           >
-            <div className='p-6 w-full bg-white shadow-lg rounded-xl lg:h-75 xl:h-65'>
+            <div className='p-6 w-full bg-white shadow-lg rounded-xl lg:h-82 xl:h-70'>
               <h3 className='text-lg md:text-xl font-bold mb-4 text-gray-800 lg:h-[60px]'>
                 {data.heading}</h3>
-              <div className='flex flex-col gap-3'>
+              <div className='flex flex-col gap-4'>
                 {data.stats.map((stat, idx) => (
                   <div key={idx} className='flex items-start text-gray-700'>
-                    {stat.icon}
-                    <div>
-                      <span className='text-lg text-[#69c] font-bold'>{stat.count}</span>
-                      <span className='text-base'>{stat.text}</span></div>
+                    <div className='mr-2'>{stat.icon}</div>
+                    <div className='flex gap-1 items-start'>
+                      <span className='text-[#69c] font-extrabold'>{stat.count}</span>
+                      <span className='text-base'>{stat.text}</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -168,12 +169,12 @@ export default function WhyChooseUs() {
         ))}
       </div>
 
-        <p className='max-w-7xl mx-auto text-lg md:text-xl lg:text-2xl font-semibold text-center'>Ready to Transform Your Ideas into Reality?  <Link
-          to="/contactUs"
-          className="text-blue-600 hover:text-blue-800"
-        >
-          Contact Us
-        </Link></p>
+      <p className='max-w-7xl mx-auto text-lg md:text-xl lg:text-2xl font-semibold text-center'>Ready to Transform Your Ideas into Reality?  <Link
+        to="/contactUs"
+        className="text-blue-600 hover:text-blue-800"
+      >
+        Contact Us
+      </Link></p>
 
     </section>
   );

@@ -1,9 +1,13 @@
-import React from 'react';
+import React ,{useEffect} from 'react';
 import heroVideo from '../assets/aboutUsVideo.mp4';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaLightbulb, FaHandshake, FaGlobeAmericas } from 'react-icons/fa';
 
 const AboutUs = () => {
+  useEffect(() => {
+    document.title = "HOSTEDMINDS - ABOUT US";
+  }, []);
+
   return (
     <div className="font-sans text-gray-800">
 

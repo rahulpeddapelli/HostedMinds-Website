@@ -1,5 +1,5 @@
 
- import notfoundImage from '../assets/faqNotFound.png'
+import notfoundImage from '../assets/faqNotFound.png'
 
 const NotFound = () => {
   return (

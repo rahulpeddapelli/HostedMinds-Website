@@ -11,6 +11,9 @@ import ScrollToTop from './utilityFunctions/ScrollToTop.jsx';
 import ScrollToFaq from './utilityFunctions/ScrollToFaq.jsx';
 import { useState } from 'react';
 import NotFound from './pages/NotFound.jsx';
+import { PrimeReactProvider } from 'primereact/api';
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+
 
 
 
@@ -20,6 +23,7 @@ function App() {
 
   return (
     <>
+    <PrimeReactProvider>
     <BrowserRouter>
       <ScrollToTop />
       <ScrollToFaq offset={navbarHeight} />
@@ -34,6 +38,7 @@ function App() {
       </Routes>
       <Footer />
     </BrowserRouter> 
+    </PrimeReactProvider>
     </>
   )
 }

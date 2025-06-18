@@ -59,7 +59,7 @@ export default function Navbar({ setOpenService, setNavbarHeight}) {
 
   return (
     <nav ref = {navRef} className="bg-[#69c] sticky top-0 z-50 shadow-md lg:h-16">
-      {/* Top Row: Logo + Nav + Search OR Menu */}
+      {/* Logo + Nav + Search OR Menu */}
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo + Name */}
         <Link to="/" className="flex items-center gap-2 cursor-pointer">

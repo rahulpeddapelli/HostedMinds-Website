@@ -9,6 +9,11 @@ export default function ServicesPage({ currentOpenService, setOpenService }) {
   const [rightHeight, setRightHeight] = useState(0);
   const rightRef = useRef(null);
 
+
+  useEffect(() => {
+      document.title = "HOSTEDMINDS - SERVICES";
+    }, []);
+
   useEffect(() => {
     const updateHeight = () => {
       if (rightRef.current) {
@@ -60,7 +65,7 @@ export default function ServicesPage({ currentOpenService, setOpenService }) {
         <div className="fixed inset-0 bg-black/70 z-50 flex">
           <div className="bg-white w-3/4 h-full flex flex-col max-h-screen">
 
-            {/* Header (static) */}
+            {/* Header*/}
             <div className="p-4 border-b border-gray-300 flex items-center justify-between bg-white shrink-0">
               <h2 className="text-2xl font-bold text-[#333]">Our Services</h2>
               <button
